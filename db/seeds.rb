@@ -1,5 +1,28 @@
-puts "🌱 Seeding spices..."
+require 'faker'
 
-# Seed your database here
+puts "🌱 Seeding data..."
 
-puts "✅ Done seeding!"
+# Create eateries
+eateries = []
+rand(1..10).times do
+  eatery = Eatery.create(
+    name: Faker::Restaurant.name,
+    location: Faker::Address.city,
+    rating: rand(1..5)
+  )
+  eateries << eatery
+end
+
+# Create reviews for each eatery
+eateries.each do |eatery|
+  rand(1..10).times do
+    Review.create(
+      picture: Faker::LoremPixel.image(size: "200x200", is_gray: false, category: 'food'),
+      comment: Faker::Lorem.sentence,
+      eatery_id: eatery.id
+    )
+  end
+end
+
+puts "🌱 Done seeding"
+
