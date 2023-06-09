@@ -56,4 +56,8 @@ end
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 gem 'puma'
+gem 'pg'
 
+
+
+gem 'shotgun', '~> 0.9.2'
